@@ -212,13 +212,13 @@ namespace TreyarchCompiler
             directive.Rule = Empty | Overrides | includes | globals | FunctionFrame | NameSpaceDirective | usingTree;
 
             //Includes
-            includes.Rule = ToTerm("#include") + IncludeIdentifier + includeExtension.Q() + ";" | 
+            includes.Rule = ToTerm("#include") + IncludeIdentifier + includeExtension.Q() + ";" |
                             ToTerm("#using") + IncludeIdentifier + includeExtension.Q() + ";";
             includeExtension.Rule = ToTerm(".csc") | ToTerm(".gsc");
 
             //Globals
             globals.Rule = ToTerm("#define") + Identifier + equalOperator + new NonTerminal("expr", (NumberLiteral | vector | verbatimString | iString | StringLiteral | booleanExpression | newArray)) + ";";
-            
+
             //Functions
             functions.Rule = Identifier + parameters + block |
                              Identifier + equalOperator + parameters + "=>" + new NonTerminal("block", declaration) |
@@ -231,7 +231,7 @@ namespace TreyarchCompiler
             booleanAndExpression.Rule = booleanExpression + ToTerm("&&") + booleanExpression;
             booleanOrExpression.Rule = blorOp + ToTerm("||") + blorOp | booleanExpression + ToTerm("||") + booleanExpression;
             boolNot.Rule = ToTerm("!") + boolNotOperand;
-            
+
 
             //Parenthesis
             parenBooleanExpression.Rule = "(" + booleanExpression + ")";
@@ -244,9 +244,9 @@ namespace TreyarchCompiler
 
             //Conditional
             conditionalStatement.Rule = booleanExpression + ToTerm("?") + booleanExpression + ToTerm(":") + booleanExpression;
-            
+
             //Boolean Operand
-            boolOperand.Rule =  new NonTerminal("pemdas", expression) |
+            boolOperand.Rule = new NonTerminal("pemdas", expression) |
                                 new NonTerminal("relationalExpression", boolExprOperand + relationalOperator + boolExprOperand) |
                                 new NonTerminal("relationalExpression", boolExprOperand + equalityOperator + boolExprOperand) |
                                 conditionalStatement;
@@ -271,7 +271,7 @@ namespace TreyarchCompiler
             size.Rule = variableExpr + ".size" | StringLiteral + ".size";
             vector.Rule = "(" + booleanExpression + "," + booleanExpression + "," + booleanExpression + ")";
 
-            arrayAssignment.Rule = NumberLiteral + ":" + booleanExpression | StringLiteral + ":" + booleanExpression | 
+            arrayAssignment.Rule = NumberLiteral + ":" + booleanExpression | StringLiteral + ":" + booleanExpression |
                 hashedString + ":" + booleanExpression | hashedVariable + ":" + booleanExpression;
             arrayAssignments.Rule = MakePlusRule(arrayAssignments, ToTerm(","), arrayAssignment) | arrayAssignment;
             shortHandArray.Rule = "[" + arrayAssignments + "]";
@@ -323,7 +323,7 @@ namespace TreyarchCompiler
             //Master Parameter Rules
             parameters.Rule = "(" + optionalParameters + ")" | "(" + ")";
             optionalParameters.Rule = MakeStarRule(optionalParameters, ToTerm(","), parameterExpr) | parameterExpr;
-            
+
             //Parameter Rules
             parameterExpr.Rule = Identifier | setOptionalParam;
             setOptionalParam.Rule = Identifier + equalOperator + optionalExpr;
@@ -363,8 +363,8 @@ namespace TreyarchCompiler
             waittillframeend.Rule = ToTerm("waittillframeend") + ";";
 
             //Set Variable Field
-            setVariableField.Rule = variableExpr + shortExprOperator + booleanExpression + ";" | 
-                                    variableExpr + equalOperator + setVariableFieldExpr + ";"  | 
+            setVariableField.Rule = variableExpr + shortExprOperator + booleanExpression + ";" |
+                                    variableExpr + equalOperator + setVariableFieldExpr + ";" |
                                     variableExpr + incDecOperator + ";";
             #endregion
 
@@ -401,7 +401,7 @@ namespace TreyarchCompiler
 
             MarkTransient
                 (
-                    boolNotOperand, 
+                    boolNotOperand,
                     boolOperand,
                     parenExpr,
                     parenMathExpr,

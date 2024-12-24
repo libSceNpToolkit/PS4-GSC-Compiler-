@@ -38,6 +38,7 @@
     <ApplicationIcon>download %282%29.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="MetroFramework.txt" />
     <Content Include="Payloads\**\**">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -49,14 +50,15 @@
     <Reference Include="Irony, Version=1.1.0.0, Culture=neutral, PublicKeyToken=ca48ace7223ead47, processorArchitecture=MSIL">
       <HintPath>..\packages\Irony.1.1.0\lib\net40\Irony.dll</HintPath>
     </Reference>
-    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
-      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+    <Reference Include="MetroFramework, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroFramework.RunTime.1.2.0.3\lib\net40-Client\MetroFramework.dll</HintPath>
     </Reference>
-    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
-      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
+    <Reference Include="MetroFramework.Design, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroFramework.Design.1.2.0.3\lib\net40\MetroFramework.Design.dll</HintPath>
+      <Private>False</Private>
     </Reference>
-    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
-      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+    <Reference Include="MetroFramework.Fonts, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroFramework.Fonts.1.2.0.3\lib\net40\MetroFramework.Fonts.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -107,33 +109,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Compiler\Enums\Games.cs" />
+    <Compile Include="Compiler\Enums\Masks.cs" />
+    <Compile Include="Compiler\Enums\Platforms.cs" />
+    <Compile Include="Compiler\Games\T8Compiler.cs" />
     <Compile Include="ConditionalBlocks.cs" />
-    <Compile Include="CompilerLib\CRC32.cs" />
-    <Compile Include="CompilerLib\EndianIO.cs" />
-    <Compile Include="CompilerLib\OpCodes\T7OpCode.cs" />
-    <Compile Include="CompilerLib\OpCodes\T7Op_AbstractCall.cs" />
-    <Compile Include="CompilerLib\OpCodes\T7OP_Call.cs" />
-    <Compile Include="CompilerLib\OpCodes\T7OP_CallPtr.cs" />
-    <Compile Include="CompilerLib\OpCodes\T7OP_EvalFieldVariable.cs" />
-    <Compile Include="CompilerLib\OpCodes\T7OP_GetFuncPtr.cs" />
-    <Compile Include="CompilerLib\OpCodes\T7OP_GetHash.cs" />
-    <Compile Include="CompilerLib\OpCodes\T7OP_GetLocal.cs" />
-    <Compile Include="CompilerLib\OpCodes\T7OP_GetNumericValue.cs" />
-    <Compile Include="CompilerLib\OpCodes\T7OP_GetString.cs" />
-    <Compile Include="CompilerLib\OpCodes\T7OP_Jump.cs" />
-    <Compile Include="CompilerLib\OpCodes\T7OP_Return.cs" />
-    <Compile Include="CompilerLib\OpCodes\T7OP_SafeCreateLocalVariables.cs" />
-    <Compile Include="CompilerLib\ScriptComponents\T7DebugTableSection.cs" />
-    <Compile Include="CompilerLib\ScriptComponents\T7ExportsSection.cs" />
-    <Compile Include="CompilerLib\ScriptComponents\T7ImportSection.cs" />
-    <Compile Include="CompilerLib\ScriptComponents\T7IncludesSection.cs" />
-    <Compile Include="CompilerLib\ScriptComponents\T7NameSection.cs" />
-    <Compile Include="CompilerLib\ScriptComponents\T7ScriptHeader.cs" />
-    <Compile Include="CompilerLib\ScriptComponents\T7ScriptSection.cs" />
-    <Compile Include="CompilerLib\ScriptComponents\T7StringFixupsSection.cs" />
-    <Compile Include="CompilerLib\ScriptComponents\T7StringTableSection.cs" />
-    <Compile Include="CompilerLib\T7ScriptObject.cs" />
-    <Compile Include="CompilerLib\Utility.cs" />
+    <Compile Include="T7CompilerLib\CRC32.cs" />
+    <Compile Include="T7CompilerLib\EndianIO.cs" />
+    <Compile Include="T7CompilerLib\OpCodes\T7OpCode.cs" />
+    <Compile Include="T7CompilerLib\OpCodes\T7Op_AbstractCall.cs" />
+    <Compile Include="T7CompilerLib\OpCodes\T7OP_Call.cs" />
+    <Compile Include="T7CompilerLib\OpCodes\T7OP_CallPtr.cs" />
+    <Compile Include="T7CompilerLib\OpCodes\T7OP_EvalFieldVariable.cs" />
+    <Compile Include="T7CompilerLib\OpCodes\T7OP_GetFuncPtr.cs" />
+    <Compile Include="T7CompilerLib\OpCodes\T7OP_GetHash.cs" />
+    <Compile Include="T7CompilerLib\OpCodes\T7OP_GetLocal.cs" />
+    <Compile Include="T7CompilerLib\OpCodes\T7OP_GetNumericValue.cs" />
+    <Compile Include="T7CompilerLib\OpCodes\T7OP_GetString.cs" />
+    <Compile Include="T7CompilerLib\OpCodes\T7OP_Jump.cs" />
+    <Compile Include="T7CompilerLib\OpCodes\T7OP_Return.cs" />
+    <Compile Include="T7CompilerLib\OpCodes\T7OP_SafeCreateLocalVariables.cs" />
+    <Compile Include="T7CompilerLib\ScriptComponents\T7DebugTableSection.cs" />
+    <Compile Include="T7CompilerLib\ScriptComponents\T7ExportsSection.cs" />
+    <Compile Include="T7CompilerLib\ScriptComponents\T7ImportSection.cs" />
+    <Compile Include="T7CompilerLib\ScriptComponents\T7IncludesSection.cs" />
+    <Compile Include="T7CompilerLib\ScriptComponents\T7NameSection.cs" />
+    <Compile Include="T7CompilerLib\ScriptComponents\T7ScriptHeader.cs" />
+    <Compile Include="T7CompilerLib\ScriptComponents\T7ScriptSection.cs" />
+    <Compile Include="T7CompilerLib\ScriptComponents\T7StringFixupsSection.cs" />
+    <Compile Include="T7CompilerLib\ScriptComponents\T7StringTableSection.cs" />
+    <Compile Include="T7CompilerLib\T7ScriptObject.cs" />
+    <Compile Include="T7CompilerLib\Utility.cs" />
     <Compile Include="Compiler\BaseSyntax.cs" />
     <Compile Include="Compiler\Compiler.cs" />
     <Compile Include="Compiler\Games\BLOPSCompiler.cs" />
@@ -198,6 +204,34 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SourceTokenDef.cs" />
+    <Compile Include="T8CompilerLib\CRC32.cs" />
+    <Compile Include="T8CompilerLib\OpCodes\T89OpCode.cs" />
+    <Compile Include="T8CompilerLib\OpCodes\T89OP_AbstractCall.cs" />
+    <Compile Include="T8CompilerLib\OpCodes\T89OP_Call.cs" />
+    <Compile Include="T8CompilerLib\OpCodes\T89OP_CallPtr.cs" />
+    <Compile Include="T8CompilerLib\OpCodes\T89OP_EvalFieldVariable.cs" />
+    <Compile Include="T8CompilerLib\OpCodes\T89OP_GetFuncPtr.cs" />
+    <Compile Include="T8CompilerLib\OpCodes\T89OP_GetGlobal.cs" />
+    <Compile Include="T8CompilerLib\OpCodes\T89OP_GetHash.cs" />
+    <Compile Include="T8CompilerLib\OpCodes\T89OP_GetLocal.cs" />
+    <Compile Include="T8CompilerLib\OpCodes\T89OP_GetNumericValue.cs" />
+    <Compile Include="T8CompilerLib\OpCodes\T89OP_GetString.cs" />
+    <Compile Include="T8CompilerLib\OpCodes\T89OP_Jump.cs" />
+    <Compile Include="T8CompilerLib\OpCodes\T89OP_Notification.cs" />
+    <Compile Include="T8CompilerLib\OpCodes\T89OP_Return.cs" />
+    <Compile Include="T8CompilerLib\OpCodes\T89OP_SafeCreateLocalVariables.cs" />
+    <Compile Include="T8CompilerLib\OpCodes\T89OP_SafeSetVFC.cs" />
+    <Compile Include="T8CompilerLib\OpCodes\T89OP_SetLocal.cs" />
+    <Compile Include="T8CompilerLib\OpCodes\T89OP_SetVariableFieldRef.cs" />
+    <Compile Include="T8CompilerLib\ScriptsComponents\T89ExportsSection.cs" />
+    <Compile Include="T8CompilerLib\ScriptsComponents\T89GlobalObjectsSection.cs" />
+    <Compile Include="T8CompilerLib\ScriptsComponents\T89ImportSection.cs" />
+    <Compile Include="T8CompilerLib\ScriptsComponents\T89IncludesSection.cs" />
+    <Compile Include="T8CompilerLib\ScriptsComponents\T89ScriptHeader.cs" />
+    <Compile Include="T8CompilerLib\ScriptsComponents\T89ScriptSection.cs" />
+    <Compile Include="T8CompilerLib\ScriptsComponents\T89StringTableSection.cs" />
+    <Compile Include="T8CompilerLib\T89ScriptObject.cs" />
+    <Compile Include="T8CompilerLib\Utility.cs" />
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -230,6 +264,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="vm_codes.db2" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

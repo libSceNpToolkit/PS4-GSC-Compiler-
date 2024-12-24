@@ -151,7 +151,7 @@ namespace TreyarchCompiler.Games
                             goto functionsLabel;
 
                         case "functions":
-                            functionsLabel:
+                        functionsLabel:
                             var function = FunctionFrame.ChildNodes[FunctionFrame.ChildNodes.Count - 1];
                             var functionName = function.ChildNodes[function.ChildNodes.FindIndex(e => e.Term.Name == "identifier")].Token.ValueString.ToLower();
                             var Parameters = function.ChildNodes[function.ChildNodes.FindIndex(e => e.Term.Name == "parameters")].ChildNodes[0].ChildNodes;
@@ -443,7 +443,7 @@ namespace TreyarchCompiler.Games
 
             if (NSNode != null)
             {
-                    t7_ns = Script.ScriptHash(NSNode.ChildNodes[0].FindTokenAndGetText().ToLower());
+                t7_ns = Script.ScriptHash(NSNode.ChildNodes[0].FindTokenAndGetText().ToLower());
             }
 
             byte Flags = (byte)ImportFlags.IsRef;
