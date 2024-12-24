@@ -1,5 +1,5 @@
 # PS4 BO3 & 4 GSC Compiler 
-This is an open source Black Ops 3/4 GSC Compiler Injector for PS4 for there latest 1.33 Update.
+This is an open source Black Ops 3/4 GSC Compiler for PS4 for there latest Game Update's.
 It uses a stripped down version of [shiversoftdev/t7-compiler](https://github.com/shiversoftdev/t7-compiler)
 
 ##### Credits:
